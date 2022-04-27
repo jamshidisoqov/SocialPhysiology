@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="io.jamshid.socialphysiology.ui.home.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_topicFragment"
+            app:destination="@id/topicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="io.jamshid.socialphysiology.ui.search.SearchFragment"
+        android:label="search_fragment"
+        tools:layout="@layout/search_fragment" />
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="io.jamshid.socialphysiology.ui.info.InfoFragment"
+        android:label="info_fragment"
+        tools:layout="@layout/info_fragment" />
+    <fragment
+        android:id="@+id/topicFragment"
+        android:name="io.jamshid.socialphysiology.ui.home.topic.TopicFragment"
+        android:label="topic_fragment"
+        tools:layout="@layout/topic_fragment" >
+        <action
+            android:id="@+id/action_topicFragment_to_lessonFragment"
+            app:destination="@id/lessonFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/lessonFragment"
+        android:name="io.jamshid.socialphysiology.ui.home.topic.lesson.LessonFragment"
+        android:label="lesson_fragment"
+        tools:layout="@layout/lesson_fragment" />
+</navigation>

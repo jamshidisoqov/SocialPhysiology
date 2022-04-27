@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_action_bar"
+    tools:context=".ui.home.topic.lesson.LessonFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <ImageView
+                android:id="@+id/img_back_lesson"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_back" />
+            <TextView
+                android:id="@+id/tv_title_ab"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Sotsialliq pedagokika"
+                android:textSize="18sp"
+                android:textColor="@color/app_color"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/img_save_lesson"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_star"
+                android:padding="8dp"
+                android:layout_toStartOf="@id/img_menu_lesson"/>
+            <ImageView
+                android:id="@+id/img_menu_lesson"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_menu"
+                android:layout_centerVertical="true"
+                android:padding="8dp"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_text_lesson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_qq"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textAlignment="center"/>
+    </LinearLayout>
+</ScrollView>
