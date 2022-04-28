@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import io.jamshid.socialphysiology.R
 import io.jamshid.socialphysiology.common.base.BaseFragment
 import io.jamshid.socialphysiology.databinding.ActionBarHomeBinding
 import io.jamshid.socialphysiology.databinding.HomeFragmentBinding
 import io.jamshid.socialphysiology.ui.home.adapters.ChapterAdapter
 
+@AndroidEntryPoint
 class HomeFragment : BaseFragment<HomeViewModel>() {
 
 

@@ -1,14 +1,15 @@
 package io.jamshid.socialphysiology.ui.search
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import io.jamshid.socialphysiology.common.base.BaseFragment
 import io.jamshid.socialphysiology.databinding.SearchFragmentBinding
 
+@AndroidEntryPoint
 class SearchFragment : BaseFragment<SearchViewModel>() {
 
     private var _binding: SearchFragmentBinding? = null

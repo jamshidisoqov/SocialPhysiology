@@ -6,11 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import io.jamshid.socialphysiology.R
+import io.jamshid.socialphysiology.common.base.BaseFragment
 import io.jamshid.socialphysiology.databinding.ActionBarHomeBinding
 import io.jamshid.socialphysiology.databinding.LessonFragmentBinding
 
-class LessonFragment : Fragment() {
+
+@AndroidEntryPoint
+class LessonFragment : BaseFragment<LessonViewModel>() {
 
 
     private var _binding: LessonFragmentBinding? = null
@@ -34,5 +38,8 @@ class LessonFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
     }
+
+    override val viewModel: LessonViewModel
+        get() = vm
 
 }
