@@ -23,7 +23,7 @@ interface SocailDao {
     @Query("SELECT*FROM lesson WHERE paragraph_id=:topicId")
     fun getLessonByTopic(topicId: Int): Flow<Lesson>
 
-    //question
+    //questions
     @Query("SELECT*FROM question WHERE chapter_id=:chapterId")
     fun getQuestionByLesson(chapterId: Int): Flow<Question>
 
