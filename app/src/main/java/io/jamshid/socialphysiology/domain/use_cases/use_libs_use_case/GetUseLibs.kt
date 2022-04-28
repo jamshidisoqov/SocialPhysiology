@@ -5,7 +5,7 @@ import java.util.concurrent.Flow
 
 class GetUseLibs (private val repository: Repository) {
 
-    operator fun invoke(lessonId:Int) = repository.getUseLibsByLesson(lessonId)
+    operator fun invoke() = repository.getUseLibsByLesson()
 
 
 }

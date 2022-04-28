@@ -21,10 +21,10 @@ class Repository @Inject constructor(private val socialDao: SocailDao) {
     fun getQuestionsByLesson(lessonId: Int): Flow<Question> =
         socialDao.getQuestionByLesson(lessonId)
 
-    fun getUseLibsByLesson(lessonId: Int): Flow<UseLib> = socialDao.getUseLibByLesson(lessonId)
+    fun getUseLibsByLesson(): Flow<UseLib> = socialDao.getUseLibByLesson()
 
     fun getFavouriteByLesson():Flow<List<Lesson>> = socialDao.getFavourites()
 
-    suspend fun updateLesson(lesson: Lesson) = socialDao.updateFavouritesByStatus(lesson)
+    suspend fun updateLesson(Lesson: Lesson) = socialDao.updateFavouritesByStatus(Lesson)
 
 }

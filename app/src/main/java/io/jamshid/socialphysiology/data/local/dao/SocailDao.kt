@@ -14,22 +14,26 @@ interface SocailDao {
     //chapter
     @Query("SELECT*FROM chapter")
     fun getAllChapter(): Flow<List<Chapter>>
+
     //topic
-    @Query("SELECT*FROM topic WHERE chapterId=:chapterId")
-    fun getAllTopicByChapter(chapterId:Int):Flow<List<Topic>>
+    @Query("SELECT*FROM paragraph WHERE chapter_id=:chapterId")
+    fun getAllTopicByChapter(chapterId: Int): Flow<List<Topic>>
+
     //lesson
-    @Query("SELECT*FROM lesson WHERE topicId=:topicId")
-    fun getLessonByTopic(topicId:Int):Flow<Lesson>
+    @Query("SELECT*FROM lesson WHERE paragraph_id=:topicId")
+    fun getLessonByTopic(topicId: Int): Flow<Lesson>
 
     //question
-    @Query("SELECT*FROM question WHERE lessonId=:lessonId")
-    fun getQuestionByLesson(lessonId:Int):Flow<Question>
+    @Query("SELECT*FROM question WHERE chapter_id=:chapterId")
+    fun getQuestionByLesson(chapterId: Int): Flow<Question>
+
     //use_lib
-    @Query("SELECT*FROM uselib WHERE lessonId=:lessonId")
-    fun getUseLibByLesson(lessonId:Int):Flow<UseLib>
+    @Query("SELECT*FROM uselib")
+    fun getUseLibByLesson(): Flow<UseLib>
+
     //favourites
     @Query("SELECT*FROM lesson WHERE status=1")
-    fun getFavourites():Flow<List<Lesson>>
+    fun getFavourites(): Flow<List<Lesson>>
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateFavouritesByStatus(lesson: Lesson)

@@ -31,7 +31,7 @@ object AppModule {
             application.applicationContext,
             AppDatabase::class.java,
             Constants.DB_NAME
-        ).build()
+        ).createFromAsset("book.db").build()
     }
 
     @Provides

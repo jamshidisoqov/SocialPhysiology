@@ -1,13 +1,11 @@
 package io.jamshid.socialphysiology.ui.favourite
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import io.jamshid.socialphysiology.R
 import io.jamshid.socialphysiology.common.base.BaseFragment
 import io.jamshid.socialphysiology.common.core.OnItemClickListener
 import io.jamshid.socialphysiology.data.local.entities.chapter.Chapter
