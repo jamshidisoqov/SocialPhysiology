@@ -14,6 +14,7 @@ import io.jamshid.socialphysiology.common.base.BaseFragment
 import io.jamshid.socialphysiology.common.core.OnItemClickListener
 import io.jamshid.socialphysiology.data.local.entities.topic.Topic
 import io.jamshid.socialphysiology.databinding.ActionBarHomeBinding
+import io.jamshid.socialphysiology.databinding.ActionBarTopicBinding
 import io.jamshid.socialphysiology.databinding.TopicFragmentBinding
 import io.jamshid.socialphysiology.ui.home.topic.adapters.TopicAdapter
 import kotlinx.coroutines.flow.collectLatest
@@ -25,7 +26,7 @@ class TopicFragment : BaseFragment<TopicViewModel>() {
 
     private var _binding: TopicFragmentBinding? = null
     private val binding: TopicFragmentBinding get() = _binding!!
-    private var acBinding: ActionBarHomeBinding? = null
+    private var acBinding: ActionBarTopicBinding? = null
     private val vm: TopicViewModel by viewModels()
     private val args: TopicFragmentArgs by navArgs()
     private lateinit var adapter: TopicAdapter
@@ -37,7 +38,13 @@ class TopicFragment : BaseFragment<TopicViewModel>() {
 
         _binding = TopicFragmentBinding.inflate(inflater, container, false)
         acBinding =
-            ActionBarHomeBinding.bind(inflater.inflate(R.layout.action_bar_home, null, false))
+            ActionBarTopicBinding.bind(
+                inflater.inflate(
+                    R.layout.action_bar_topic,
+                    container,
+                    false
+                )
+            )
 
         adapter = TopicAdapter(object : OnItemClickListener<Topic> {
             override fun onItemClick(data: Topic) {
@@ -48,6 +55,13 @@ class TopicFragment : BaseFragment<TopicViewModel>() {
 
         acBinding!!.apply {
             imgBack.visibility = View.VISIBLE
+            searchViewContainer.setOnClickListener {
+                findNavController().navigate(
+                    TopicFragmentDirections.actionTopicFragmentToTopicSearchFragment(
+                        args.chapter
+                    )
+                )
+            }
             imgBack.setOnClickListener {
                 findNavController().navigateUp()
             }
@@ -63,9 +77,6 @@ class TopicFragment : BaseFragment<TopicViewModel>() {
         }
 
         binding.rcvTopic.adapter = adapter
-
-
-
 
         return binding.root
     }

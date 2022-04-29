@@ -56,6 +56,12 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
             }
         }
 
+        acBinding!!.apply {
+            searchViewContainer.setOnClickListener {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSearchFragment(1))
+            }
+        }
+
         return binding.root
     }
 

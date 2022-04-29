@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.topic.TopicFragment">
 
-    <include layout="@layout/action_bar_home" />
+    <include layout="@layout/action_bar_topic" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
