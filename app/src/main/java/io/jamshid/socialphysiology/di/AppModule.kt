@@ -31,7 +31,8 @@ object AppModule {
             application.applicationContext,
             AppDatabase::class.java,
             Constants.DB_NAME
-        ).createFromAsset("book.db").build()
+        ).createFromAsset("book.db")
+            .fallbackToDestructiveMigration().build()
     }
 
     @Provides

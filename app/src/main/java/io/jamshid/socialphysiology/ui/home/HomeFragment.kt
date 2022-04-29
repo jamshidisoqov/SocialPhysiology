@@ -5,13 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import io.jamshid.socialphysiology.R
 import io.jamshid.socialphysiology.common.base.BaseFragment
 import io.jamshid.socialphysiology.databinding.ActionBarHomeBinding
 import io.jamshid.socialphysiology.databinding.HomeFragmentBinding
 import io.jamshid.socialphysiology.ui.home.adapters.ChapterAdapter
+import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<HomeViewModel>() {
@@ -27,13 +30,23 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         _binding = HomeFragmentBinding.inflate(inflater, container, false)
 
-        acBinding = ActionBarHomeBinding.bind(inflater.inflate(R.layout.action_bar_home,container,false))
+        vm.getAllChapters()
+
+        acBinding =
+            ActionBarHomeBinding.bind(inflater.inflate(R.layout.action_bar_home, container, false))
 
         adapter = ChapterAdapter()
 
         binding.rcvChapter.adapter = adapter
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            vm.chapters.collectLatest {
+                adapter.setData(it)
+            }
+        }
 
         return binding.root
     }

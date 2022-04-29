@@ -12,7 +12,7 @@
         android:id="@+id/fragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
@@ -24,4 +24,5 @@
         app:itemIconSize="24dp"
         app:itemActiveIndicatorStyle="@color/app_color"
         android:layout_height="56dp"/>
+
 </LinearLayout>

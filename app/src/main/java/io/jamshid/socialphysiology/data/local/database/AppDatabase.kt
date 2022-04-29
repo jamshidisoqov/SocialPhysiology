@@ -8,10 +8,11 @@ import io.jamshid.socialphysiology.data.local.entities.lesson.Lesson
 import io.jamshid.socialphysiology.data.local.entities.question.Question
 import io.jamshid.socialphysiology.data.local.entities.topic.Topic
 import io.jamshid.socialphysiology.data.local.entities.use_lib.UseLib
+import io.jamshid.socialphysiology.data.utils.Constants
 
 @Database(
     entities = [Chapter::class, Lesson::class, Question::class, Topic::class, UseLib::class],
-    version = 1,
+    version = Constants.DB_VERSION,
 )
 abstract class AppDatabase : RoomDatabase(){
 
