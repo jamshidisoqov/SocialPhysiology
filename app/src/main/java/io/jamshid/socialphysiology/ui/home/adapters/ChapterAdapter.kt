@@ -5,11 +5,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.jamshid.socialphysiology.R
+import io.jamshid.socialphysiology.common.core.OnItemClickListener
 import io.jamshid.socialphysiology.common.core.TextWatcher
 import io.jamshid.socialphysiology.data.local.entities.chapter.Chapter
 import io.jamshid.socialphysiology.databinding.RcvChapterItemBinding
 
-class ChapterAdapter : RecyclerView.Adapter<ChapterAdapter.ViewHolder>() {
+class ChapterAdapter(private val onItemClickListener: OnItemClickListener<Chapter>) : RecyclerView.Adapter<ChapterAdapter.ViewHolder>() {
 
     private lateinit var binding: RcvChapterItemBinding
     private var chapterList: List<Chapter> = emptyList()
@@ -18,6 +19,7 @@ class ChapterAdapter : RecyclerView.Adapter<ChapterAdapter.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(chapter: Chapter) {
             binding.tvTitle.text = TextWatcher.textSubstring(chapter.name)
+            binding.root.setOnClickListener { onItemClickListener.onItemClick(chapter) }
         }
     }
 

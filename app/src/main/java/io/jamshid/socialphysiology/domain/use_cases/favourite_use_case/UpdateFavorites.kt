@@ -4,5 +4,5 @@ import io.jamshid.socialphysiology.data.local.entities.lesson.Lesson
 import io.jamshid.socialphysiology.domain.repository.Repository
 
 class UpdateFavorites(private val repository: Repository) {
-    suspend operator fun invoke(Lesson: Lesson) = repository.updateLesson(Lesson)
+    suspend operator fun invoke(lesson: Lesson) = repository.updateLesson(lesson)
 }

@@ -8,9 +8,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import io.jamshid.socialphysiology.R
 import io.jamshid.socialphysiology.common.base.BaseFragment
+import io.jamshid.socialphysiology.common.core.OnItemClickListener
+import io.jamshid.socialphysiology.data.local.entities.chapter.Chapter
 import io.jamshid.socialphysiology.databinding.ActionBarHomeBinding
 import io.jamshid.socialphysiology.databinding.HomeFragmentBinding
 import io.jamshid.socialphysiology.ui.home.adapters.ChapterAdapter
@@ -38,7 +41,12 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
         acBinding =
             ActionBarHomeBinding.bind(inflater.inflate(R.layout.action_bar_home, container, false))
 
-        adapter = ChapterAdapter()
+        adapter = ChapterAdapter(object : OnItemClickListener<Chapter> {
+            override fun onItemClick(data: Chapter) {
+                val action = HomeFragmentDirections.actionHomeFragmentToTopicFragment(data)
+                findNavController().navigate(action)
+            }
+        })
 
         binding.rcvChapter.adapter = adapter
 

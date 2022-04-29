@@ -3,6 +3,7 @@ package io.jamshid.socialphysiology.data.local.entities.question
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "question")
 data class Question(
@@ -11,4 +12,4 @@ data class Question(
     var text: String,
     @ColumnInfo(name = "chapter_id")
     var chapterId: Int
-)
+):Serializable

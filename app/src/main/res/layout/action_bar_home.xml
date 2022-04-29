@@ -79,12 +79,15 @@
                 android:layout_height="match_parent">
 
                 <ImageView
+                    android:id="@+id/img_back"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_centerVertical="true"
                     android:padding="8dp"
                     android:src="@drawable/ic_back"
-                    android:visibility="gone" />
+                    android:tint="@color/white"
+                    android:visibility="gone"
+                    tools:ignore="UseAppTint" />
 
                 <TextView
                     android:layout_width="wrap_content"

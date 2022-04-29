@@ -38,11 +38,18 @@
         <action
             android:id="@+id/action_topicFragment_to_lessonFragment"
             app:destination="@id/lessonFragment" />
+        <argument
+            android:name="chapter"
+            app:argType="io.jamshid.socialphysiology.data.local.entities.chapter.Chapter" />
     </fragment>
 
     <fragment
         android:id="@+id/lessonFragment"
         android:name="io.jamshid.socialphysiology.ui.home.topic.lesson.LessonFragment"
         android:label="lesson_fragment"
-        tools:layout="@layout/lesson_fragment" />
+        tools:layout="@layout/lesson_fragment" >
+        <argument
+            android:name="topic"
+            app:argType="io.jamshid.socialphysiology.data.local.entities.topic.Topic" />
+    </fragment>
 </navigation>
