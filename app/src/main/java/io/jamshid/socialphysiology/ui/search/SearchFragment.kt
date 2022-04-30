@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -49,6 +50,17 @@ class SearchFragment : BaseFragment<SearchViewModel>() {
                 adapter.setData(it)
             }
         }
+        binding.homeSearchIc.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                vm.adapterChange(query!!)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                vm.adapterChange(newText!!)
+                return true
+            }
+        })
         binding.rcvSearch.adapter = adapter
 
         return binding.root

@@ -26,9 +26,9 @@ class LessonViewModel @Inject constructor(private val useCases: UseCases): BaseV
         }
     }
 
-    fun updateLesson(lesson: Lesson){
+    fun updateLesson(id:Int,status:Boolean){
         viewModelScope.launch {
-            useCases.updateFavorites.invoke(lesson)
+            useCases.updateFavorites.invoke(id, status)
         }
     }
 

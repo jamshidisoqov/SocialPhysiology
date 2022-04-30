@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="app_color">#0055A5</color>
     <color name="color_action_bar">#f8f8f8</color>
+    <color name="sepia">#DCCD51</color>
 </resources>

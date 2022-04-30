@@ -35,8 +35,25 @@ interface SocailDao {
     @Query("SELECT*FROM lesson WHERE status=1")
     fun getFavourites(): Flow<List<Lesson>>
 
-    @Update(onConflict = OnConflictStrategy.REPLACE)
+    @Update(entity = Lesson::class)
     suspend fun updateFavouritesByStatus(lesson: Lesson)
 
+    //search by chapter
+    @Transaction
+    @Query("SELECT*FROM chapter WHERE name like '%' ||:query||'%'")
+    fun searchByChapter(query: String): Flow<List<Chapter>>
+
+    //search by topic
+    @Transaction
+    @Query("SELECT*FROM paragraph WHERE name like '%' ||:query||'%'")
+    fun searchByTopic(query: String): Flow<List<Topic>>
+
+    //
+    @Transaction
+    @Query("SELECT paragraph.chapter_id,paragraph.id,paragraph.name FROM lesson INNER JOIN paragraph on lesson.paragraph_id=paragraph.id where lesson.status=1")
+    fun getFavouritesList(): Flow<List<Topic>>
+
+    @Query("UPDATE lesson SET status=:status WHERE id=:lessonId")
+    suspend fun updateLesson(lessonId: Int, status: Boolean)
 
 }

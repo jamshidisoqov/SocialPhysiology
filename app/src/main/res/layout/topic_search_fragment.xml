@@ -30,8 +30,7 @@
             android:layout_marginRight="12dp"
             android:queryHint="Search for note"
             app:defaultQueryHint="Search for note"
-            app:queryHint="Search for note"
-            app:searchIcon="@drawable/search" />
+            app:queryHint="Search for topic"/>
 
     </RelativeLayout>
 

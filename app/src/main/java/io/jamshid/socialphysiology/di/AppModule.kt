@@ -16,6 +16,8 @@ import io.jamshid.socialphysiology.domain.use_cases.favourite_use_case.UpdateFav
 import io.jamshid.socialphysiology.domain.use_cases.home_use_case.GetAllChapter
 import io.jamshid.socialphysiology.domain.use_cases.lesson_use_case.GetLesson
 import io.jamshid.socialphysiology.domain.use_cases.question_use_case.GetQuestion
+import io.jamshid.socialphysiology.domain.use_cases.search_use_case.SearchByChapter
+import io.jamshid.socialphysiology.domain.use_cases.search_use_case.SearchByTopic
 import io.jamshid.socialphysiology.domain.use_cases.topic_use_case.GetTopics
 import io.jamshid.socialphysiology.domain.use_cases.use_libs_use_case.GetUseLibs
 import javax.inject.Singleton
@@ -57,7 +59,9 @@ object AppModule {
             getQuestion = GetQuestion(repository),
             getUseLibs = GetUseLibs(repository),
             getFavourites = GetFavourites(repository),
-            updateFavorites = UpdateFavorites(repository)
+            updateFavorites = UpdateFavorites(repository),
+            searchByChapter = SearchByChapter(repository),
+            searchByTopic = SearchByTopic(repository)
         )
     }
 

@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -24,8 +26,8 @@ class TopicSearchFragment : BaseFragment<TopicSearchViewModel>() {
 
     private var _binding: TopicSearchFragmentBinding? = null
     private val binding: TopicSearchFragmentBinding get() = _binding!!
-    private lateinit var vm: TopicSearchViewModel
-    private val args:TopicSearchFragmentArgs by navArgs()
+    private val vm: TopicSearchViewModel by viewModels()
+    private val args: TopicSearchFragmentArgs by navArgs()
     private lateinit var adapter: TopicAdapter
 
     override fun onCreateView(
@@ -37,9 +39,13 @@ class TopicSearchFragment : BaseFragment<TopicSearchViewModel>() {
 
         vm.getAllTopics(args.chapter.id)
 
-        adapter = TopicAdapter(object : OnItemClickListener<Topic>{
+        adapter = TopicAdapter(object : OnItemClickListener<Topic> {
             override fun onItemClick(data: Topic) {
-                findNavController().navigate(TopicSearchFragmentDirections.actionTopicSearchFragmentToLessonFragment(data))
+                findNavController().navigate(
+                    TopicSearchFragmentDirections.actionTopicSearchFragmentToLessonFragment(
+                        data
+                    )
+                )
             }
         })
 
@@ -48,6 +54,22 @@ class TopicSearchFragment : BaseFragment<TopicSearchViewModel>() {
                 adapter.setData(it)
             }
         }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+        binding.homeSearchIc.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                vm.adapterChange(query!!)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                vm.adapterChange(newText!!)
+                return true
+            }
+        })
 
         binding.rcvSearch.adapter = adapter
 

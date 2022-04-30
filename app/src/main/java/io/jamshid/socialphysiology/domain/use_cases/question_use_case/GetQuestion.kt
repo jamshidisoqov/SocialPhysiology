@@ -4,7 +4,7 @@ import io.jamshid.socialphysiology.domain.repository.Repository
 
 class GetQuestion(private val repository: Repository) {
 
-    operator fun invoke(lessonId:Int) = repository.getQuestionsByLesson(lessonId)
+    operator fun invoke(chapterId:Int) = repository.getQuestionsByLesson(chapterId)
 
 
 }

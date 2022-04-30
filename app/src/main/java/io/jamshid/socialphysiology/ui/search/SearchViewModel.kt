@@ -26,5 +26,13 @@ class SearchViewModel @Inject constructor(private val useCases: UseCases): BaseV
         }
     }
 
+    fun adapterChange(newText:String){
+        viewModelScope.launch {
+            useCases.searchByChapter.invoke(newText).collectLatest {
+                _chapters.emit(it)
+            }
+        }
+    }
+
 
 }
